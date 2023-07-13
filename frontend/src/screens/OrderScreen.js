@@ -14,7 +14,6 @@ const OrderScreen = () => {
   const { userInfo } = useSelector(state => state.auth);
 
   const { data: order, refetch,  isLoading, error } = useGetOrderDetailsQuery(orderId);
-  console.log(order.totalPrice);
   const [ deliverOrder, { isLoading: loadingDeliver } ] = useDeliverOrderMutation(orderId);
   
   const [ payOrder, { isLoading: loadingPay } ] = usePayOrderMutation();
@@ -173,10 +172,10 @@ const OrderScreen = () => {
                   <Col>Tax Price</Col>
                   <Col>${order.taxPrice}</Col>
                 </Row>
-                <Row>
+                {/* <Row>
                   <Col>Total Price</Col>
                   <Col>${order.totalPrice}</Col>
-                </Row>
+                </Row> */}
               </ListGroupItem>
 
               {loadingDeliver && <Loading/>}
